@@ -3,5 +3,5 @@
 while read x;
 	do
 	[[ ${x} == "" ]] && break;
-	echo ${x} | tr '[:lower:]' ' ';
+	echo -e "${x}" | tr -d '[:lower:]';
 done
