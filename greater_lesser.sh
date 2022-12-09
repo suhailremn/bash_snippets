@@ -3,8 +3,14 @@
 read x;
 read y;
 
-[[ ${x} > ${y} ]] && echo -e "X is greater than Y" && exit 0;
+output=$( echo "((${x} > ${y}))" | bc -l );
+[[ ${output} == 1 ]] && msg="X is greater than Y";
 
-[[ ${x} < ${y} ]] && echo -e "X is less than Y" && exit 0;
+output=$( echo "((${x} < ${y}))" | bc -l );
+[[ ${output} == 1 ]] && msg="X is less than Y";
 
-[[ ${x} == ${y} ]] && echo -e "X is equal to Y" && exit 0;
+output=$( echo "((${x} == ${y}))" | bc -l );
+[[ ${output} == 1 ]] && msg="X is equal to Y"; 
+
+echo ${msg};
+exit 0;
